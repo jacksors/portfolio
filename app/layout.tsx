@@ -1,19 +1,10 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
 import {Header} from "@/components/header";
-import {ThemeProvider} from "@/components/ThemeProvider";
+import {Inter} from "next/font/google";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: "Jackson Stone",
@@ -28,21 +19,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background`}
+        className={`${inter.className} antialiased bg-background`}
       >
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="system"
-        enableSystem
-        disableTransitionOnChange
-      >
-        <div className={"relative flex min-h-screen flex-col bg-background"}>
-          <Header/>
-          <main>
-            {children}
-          </main>
-        </div>
-      </ThemeProvider>
+      <div className={"relative flex min-h-screen flex-col"}>
+        <Header/>
+        <main className="container mx-auto px-6 py-12">
+          {children}
+        </main>
+      </div>
       </body>
     </html>
 );
