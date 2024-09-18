@@ -33,11 +33,12 @@ const Page = () => {
         />
         <div>
           <h1 className="text-4xl font-bold mb-4">Jackson Stone</h1>
-          <p className="text-xl mb-4">Full Stack Developer @ Texas A&M University</p>
+          <p className="text-xl mb-4">Junior Full Stack Developer @ Frogslayer</p>
+          <p className="text-xl mb-4">Senior CS Student @ Texas A&M University</p>
           <p className="text-gray-600 dark:text-gray-300 mb-6">
             Hello! I&apos;m a passionate developer with a love for creating innovative solutions.
-            When I&apos;mm not coding, you can find me exploring new technologies, contributing to open-source projects,
-            or enjoying a good cup of coffee while solving coding challenges.
+            When I&apos;mm not coding, you can find me exploring new technologies, flying planes, or enjoying the outdoors.
+            Feel free to take a look around and reach out if you&apos;d like to connect!
           </p>
           <div className="flex space-x-4">
             <Button variant="outline" size="icon">
