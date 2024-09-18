@@ -19,7 +19,7 @@ interface Experience {
 
 const experiences: Experience[] = [
   {
-    years: ["Nov. 2023 - May 2024", "Sep. 2024 - Present"],
+    years: ["November 2023 - May 2024", "September 2024 - Present"],
     title: "Junior Developer",
     company: "Frogslayer",
     logo: "/frogslayer_logo.jpeg",
@@ -32,7 +32,7 @@ const experiences: Experience[] = [
     skills: [".NET Core", "C#", "Angular", "Python"]
   },
   {
-    years: ["May 2024 - Aug. 2024"],
+    years: ["May 2024 - August 2024"],
     title: "Software Development Intern",
     company: "Paycom Payroll",
     logo: "/paycom_logo.png",
@@ -44,15 +44,24 @@ const experiences: Experience[] = [
     skills: ["JavaScript", "React", "Vue.js", "PHP", "MySQL", "Redis"]
   },
   {
-    years: ["2016 - 2018"],
-    title: "Junior Developer",
-    company: "StartUp Ventures",
-    logo: "/placeholder.svg?height=40&width=40",
-    description: "Assisted in the development of innovative web and mobile applications for startups. Gained extensive experience in agile methodologies and rapid prototyping.",
+    years: ["May 2023 - August 2023"],
+    title: "Automation Developer",
+    company: "CASA",
+    logo: "/casa_logo.jpeg",
     achievements: [
-      "Contributed to 5 successful product launches",
-      "Implemented responsive designs, improving mobile user engagement by 50%",
-      "Assisted in the migration of legacy systems to modern tech stacks"
+      "Researched and developed a platform written in Go using the OpenAI API to enhance advanced search capabilities in internal documents, streamlining corporate training and customer service.",
+      "Implemented embedding-based search functionality for efficient querying of internal documents, storing the embeddings in a PostgreSQL database.",
+      "Deployed the system on Google Cloud Platform using a CI/CD pipeline, ensuring scalable and robust performance."
+    ],
+    skills: ["HTML", "CSS", "JavaScript", "React Native", "Node.js", "MongoDB"]
+  },
+  {
+    years: ["June 2022 - August 2022"],
+    title: "Student Intern",
+    company: "CISO Global",
+    logo: "/ciso_logo.jpeg",
+    achievements: [
+      "Collaborated with a Web 3.0 startup to integrate their API into a custom toolkit that can be utilized to help develop future applications requiring cryptographic timestamping of sensitive information on a blockchain."
     ],
     skills: ["HTML", "CSS", "JavaScript", "React Native", "Node.js", "MongoDB"]
   },
