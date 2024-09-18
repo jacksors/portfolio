@@ -1,27 +1,25 @@
 "use client";
 
-import {Button, buttonVariants} from "@/components/ui/button";
-import {useRouter, usePathname} from "next/navigation";
+import {Button} from "@/components/ui/button";
+import {useActivePage} from "@/hooks/use-active-page";
+import {pages} from "@/lib/pages";
+import {useNavigationContext} from "@/contexts/navigation";
 
 export const Header = () => {
-  const router = useRouter();
-
-  const pathname = usePathname();
-  const activeSection = pathname.split("/").at(1);
-
-  console.log(activeSection);
+  const activeSection = useActivePage();
+  const {handleNavigation} = useNavigationContext();
 
   return (
     <header className="sticky top-0 z-10 backdrop-blur-md bg-background/30">
       <nav className="container mx-auto px-6 py-4">
         <ul className="flex justify-center space-x-4">
-          {['about', 'projects', 'experience'].map((section) => (
-            <li key={section}>
+          {pages.map((page) => (
+            <li key={page}>
               <Button
-                variant={activeSection === section ? "default" : "ghost"}
-                onClick={() => router.push(`/${section}`)}
+                variant={activeSection === page ? "default" : "ghost"}
+                onClick={() => handleNavigation(page)}
               >
-                {section.charAt(0).toUpperCase() + section.slice(1)}
+                {page.charAt(0).toUpperCase() + page.slice(1)}
               </Button>
             </li>
           ))}

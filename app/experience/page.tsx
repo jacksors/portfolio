@@ -4,36 +4,47 @@ import {motion} from "framer-motion";
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
 import Image from "next/image";
 import {Badge} from "@/components/ui/badge";
+import {fadeIn, slideVariants} from "@/lib/animations";
+import {useNavigationContext} from "@/contexts/navigation";
 
-const experiences = [
+interface Experience {
+  years: string[]
+  title: string
+  company: string
+  logo: string
+  description?: string
+  achievements: string[]
+  skills: string[]
+}
+
+const experiences: Experience[] = [
   {
-    year: "2021 - Present",
-    title: "Senior Developer",
-    company: "Tech Innovators Inc.",
-    logo: "/placeholder.svg?height=40&width=40",
-    description: "Lead developer for cutting-edge AI-powered applications. Responsible for architecture design, team mentoring, and implementing best practices in software development.",
+    years: ["Nov. 2023 - May 2024", "Sep. 2024 - Present"],
+    title: "Junior Developer",
+    company: "Frogslayer",
+    logo: "/frogslayer_logo.jpeg",
+    description: "We partner with select clients to rapidly build, launch, and scale software products that create new revenue streams and sources of competitive advantage. Many of our clients are service-based, mid-market companies in compliance-heavy industries like legal, financial services, and healthcare. We help them fundamentally change their operating model to become a software-driven business, regularly creating new value for their customers and staying ahead of changing markets.",
     achievements: [
-      "Reduced application load time by 40% through optimizations",
-      "Implemented a microservices architecture, improving scalability",
-      "Mentored junior developers, increasing team productivity by 25%"
+      "Played a key role in a team of 7 for a critical software rescue project, developing a user-friendly web interface that enables seamless scheduling integration for the client's customers with various third-party APIs.",
+      "Improved the client's existing cluttered Angular and Python codebases with a focus on maintainability while introducing new features.",
+      "Contributed to the development of a robust new C# .NET Core API for managing integrations, designed for smooth compatibility with the client's existing systems."
     ],
-    skills: ["React", "Node.js", "Python", "AWS", "Docker", "Kubernetes"]
+    skills: [".NET Core", "C#", "Angular", "Python"]
   },
   {
-    year: "2018 - 2021",
-    title: "Full Stack Developer",
-    company: "WebSolutions Co.",
-    logo: "/placeholder.svg?height=40&width=40",
-    description: "Developed and maintained various web applications for clients across different industries. Focused on creating responsive, user-friendly interfaces and robust backend systems.",
+    years: ["May 2024 - Aug. 2024"],
+    title: "Software Development Intern",
+    company: "Paycom Payroll",
+    logo: "/paycom_logo.png",
     achievements: [
-      "Delivered 15+ successful projects for high-profile clients",
-      "Introduced automated testing, reducing bug reports by 30%",
-      "Optimized database queries, improving overall system performance"
+      "Developed a unified design portal using Next.js and PHP in collaboration with 7 other interns and a UI Design team, significantly enhancing cross-technology development across legacy PHP/jQuery and newer React systems.",
+      "Leveraged personal expertise in Next.js to mentor team members, significantly boosting overall productivity and knowledge sharing.",
+      "Won 1st place in a weekend-long Codeathon competition, designing and creating a C# .NET Core back-end for an internal team selection system."
     ],
     skills: ["JavaScript", "React", "Vue.js", "PHP", "MySQL", "Redis"]
   },
   {
-    year: "2016 - 2018",
+    years: ["2016 - 2018"],
     title: "Junior Developer",
     company: "StartUp Ventures",
     logo: "/placeholder.svg?height=40&width=40",
@@ -47,27 +58,25 @@ const experiences = [
   },
 ]
 
-const fadeIn = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.5 } }
-}
-
-const slideIn = {
-  hidden: { x: -50, opacity: 0 },
-  visible: { x: 0, opacity: 1, transition: { duration: 0.5 } }
-}
-
 const Page = () => {
+  const {direction} = useNavigationContext();
+
   return (
     <motion.section
-      initial="hidden"
-      animate="visible"
-      variants={fadeIn}
+      custom={direction}
+      variants={slideVariants}
+      initial="enter"
+      animate="center"
+      exit="exit"
+      transition={{
+        x: { type: "spring", stiffness: 300, damping: 30 },
+        opacity: { duration: 0.2 },
+      }}
     >
       <h2 className="text-3xl font-bold mb-8">Work Experience</h2>
       <div className="space-y-8">
         {experiences.map((job, index) => (
-          <motion.div key={index} variants={slideIn}>
+          <motion.div key={index} variants={fadeIn}>
             <Card>
               <CardHeader>
                 <div className="flex items-center justify-between">
@@ -84,11 +93,13 @@ const Page = () => {
                       <CardDescription>{job.company}</CardDescription>
                     </div>
                   </div>
-                  <span className="text-sm text-muted-foreground">{job.year}</span>
+                  <div className="flex flex-col-reverse">
+                    {job.years.map(year => (<span key={year} className="text-sm text-muted-foreground">{year}</span>))}
+                  </div>
                 </div>
               </CardHeader>
               <CardContent>
-                <p className="mb-4">{job.description}</p>
+                {job.description ? <p className="mb-4">{job.description}</p> : null}
                 <h4 className="font-semibold mb-2">Key Achievements:</h4>
                 <ul className="list-disc list-inside mb-4">
                   {job.achievements.map((achievement, i) => (

@@ -4,33 +4,39 @@ import {motion} from "framer-motion";
 import Image from "next/image";
 import {Button} from "@/components/ui/button";
 import {Github, Linkedin, Mail} from "lucide-react";
-
-const fadeIn = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.5 } }
-}
+import {slideVariants} from "@/lib/animations";
+import {useNavigationContext} from "@/contexts/navigation";
 
 const Page = () => {
+  const {direction} = useNavigationContext();
+
   return (
     <motion.section
-      initial="hidden"
-      animate="visible"
-      variants={fadeIn}
+      custom={direction}
+      variants={slideVariants}
+      initial="enter"
+      animate="center"
+      exit="exit"
+      transition={{
+        x: { type: "spring", stiffness: 300, damping: 30 },
+        opacity: { duration: 0.2 },
+      }}
     >
       <div className="flex flex-col md:flex-row items-center gap-8">
         <Image
-          src="/placeholder.jpg"
+          src="/nature-me.png"
           alt="Developer's portrait"
           width={300}
           height={300}
-          className="rounded-full border-4 border-accent shadow-lg"
+          className="rounded-full border-4 border-accent-foreground shadow-lg"
+          priority
         />
         <div>
-          <h1 className="text-4xl font-bold mb-4">Jane Doe</h1>
-          <p className="text-xl mb-4">Full Stack Developer | AI Enthusiast | Open Source Contributor</p>
+          <h1 className="text-4xl font-bold mb-4">Jackson Stone</h1>
+          <p className="text-xl mb-4">Full Stack Developer @ Texas A&M University</p>
           <p className="text-gray-600 dark:text-gray-300 mb-6">
-            Hello! I'm a passionate developer with a love for creating innovative solutions.
-            When I'm not coding, you can find me exploring new technologies, contributing to open-source projects,
+            Hello! I&aposm a passionate developer with a love for creating innovative solutions.
+            When I&aposmm not coding, you can find me exploring new technologies, contributing to open-source projects,
             or enjoying a good cup of coffee while solving coding challenges.
           </p>
           <div className="flex space-x-4">

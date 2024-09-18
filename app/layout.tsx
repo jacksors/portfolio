@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import {Header} from "@/components/header";
 import {Inter} from "next/font/google";
-
+import {Toaster} from "@/components/ui/toaster";
+import {NavigationContextProvider} from "@/contexts/navigation";
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -18,6 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+    <NavigationContextProvider>
       <body
         className={`${inter.className} antialiased bg-background`}
       >
@@ -27,7 +29,9 @@ export default function RootLayout({
           {children}
         </main>
       </div>
+      <Toaster/>
       </body>
+    </NavigationContextProvider>
     </html>
-);
+  );
 }
