@@ -4,6 +4,7 @@ import {Header} from "@/components/header";
 import {Inter} from "next/font/google";
 import {Toaster} from "@/components/ui/toaster";
 import {NavigationContextProvider} from "@/contexts/navigation";
+import { Analytics } from "@vercel/analytics/react"
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -32,6 +33,7 @@ export default function RootLayout({
       <Toaster/>
       </body>
     </NavigationContextProvider>
+    <Analytics />
     </html>
   );
 }
