@@ -1,14 +1,15 @@
-"use client"
+"use client";
 
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
-import {Button} from "@/components/ui/button";
-import {Github, Linkedin, Mail} from "lucide-react";
-import {slideVariants} from "@/lib/animations";
-import {useNavigationContext} from "@/contexts/navigation";
+import { buttonVariants } from "@/components/ui/button";
+import { Github, Linkedin, Mail } from "lucide-react";
+import { slideVariants } from "@/lib/animations";
+import { useNavigationContext } from "@/contexts/navigation";
+import Link from "next/link";
 
 const Page = () => {
-  const {direction} = useNavigationContext();
+  const { direction } = useNavigationContext();
 
   return (
     <motion.section
@@ -33,28 +34,43 @@ const Page = () => {
         />
         <div>
           <h1 className="text-4xl font-bold mb-4">Jackson Stone</h1>
-          <p className="text-xl mb-4">Junior Full Stack Developer @ Frogslayer</p>
-          <p className="text-xl mb-4">Senior CS Student @ Texas A&M University</p>
+          <p className="text-xl mb-4">
+            Junior Full Stack Developer @ Frogslayer
+          </p>
+          <p className="text-xl mb-4">
+            Senior CS Student @ Texas A&M University
+          </p>
           <p className="text-gray-600 dark:text-gray-300 mb-6">
-            Hello! I&apos;m a passionate developer with a love for creating innovative solutions.
-            When I&apos;m not coding, you can find me exploring new technologies, flying planes, or enjoying the outdoors.
-            Feel free to take a look around and reach out if you&apos;d like to connect!
+            Hello! I&apos;m a passionate developer with a love for creating
+            innovative solutions. When I&apos;m not coding, you can find me
+            exploring new technologies, flying planes, or enjoying the outdoors.
+            Feel free to take a look around and reach out if you&apos;d like to
+            connect!
           </p>
           <div className="flex space-x-4">
-            <Button variant="outline" size="icon">
-              <Github className="h-4 w-4"/>
-            </Button>
-            <Button variant="outline" size="icon">
-              <Linkedin className="h-4 w-4"/>
-            </Button>
-            <Button variant="outline" size="icon">
-              <Mail className="h-4 w-4"/>
-            </Button>
+            <Link
+              className={buttonVariants({ variant: "outline", size: "icon" })}
+              href="https://github.com/jacksors"
+            >
+              <Github className="h-4 w-4" />
+            </Link>
+            <Link
+              className={buttonVariants({ variant: "outline", size: "icon" })}
+              href="https://www.linkedin.com/in/jacksonrstone/"
+            >
+              <Linkedin className="h-4 w-4" />
+            </Link>
+            <Link
+              className={buttonVariants({ variant: "outline", size: "icon" })}
+              href="mailto:jacksors@tamu.edu"
+            >
+              <Mail className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </div>
     </motion.section>
-  )
-}
+  );
+};
 
 export default Page;

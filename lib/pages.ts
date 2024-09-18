@@ -1,3 +1,3 @@
-export type Page = "about" | "experience" | "projects"
+export type Page = "about" | "experience" | "projects";
 
-export const pages: Page[] = ["about", "experience"]
+export const pages: Page[] = ["about", "experience"];

@@ -1,13 +1,13 @@
 "use client";
 
-import {Button} from "@/components/ui/button";
-import {useActivePage} from "@/hooks/use-active-page";
-import {pages} from "@/lib/pages";
-import {useNavigationContext} from "@/contexts/navigation";
+import { Button } from "@/components/ui/button";
+import { useActivePage } from "@/hooks/use-active-page";
+import { pages } from "@/lib/pages";
+import { useNavigationContext } from "@/contexts/navigation";
 
 export const Header = () => {
   const activeSection = useActivePage();
-  const {handleNavigation} = useNavigationContext();
+  const { handleNavigation } = useNavigationContext();
 
   return (
     <header className="sticky top-0 z-10 backdrop-blur-md bg-background/30">
