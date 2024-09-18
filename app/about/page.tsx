@@ -29,11 +29,13 @@ const Page = () => {
           alt="Developer's portrait"
           width={300}
           height={300}
-          className="rounded-full border-4 border-accent-foreground shadow-lg"
+          className="rounded-full border-4 border-[#3a6073] shadow-lg"
           priority
         />
         <div>
-          <h1 className="text-4xl font-bold mb-4">Jackson Stone</h1>
+          <h1 className="text-4xl font-bold mb-4 bg-gradient-to-tl bg-clip-text text-transparent">
+            Jackson Stone
+          </h1>
           <p className="text-xl mb-4">
             Junior Full Stack Developer @ Frogslayer
           </p>
