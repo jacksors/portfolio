@@ -37,7 +37,7 @@ const Page = () => {
           <p className="text-xl mb-4">Senior CS Student @ Texas A&M University</p>
           <p className="text-gray-600 dark:text-gray-300 mb-6">
             Hello! I&apos;m a passionate developer with a love for creating innovative solutions.
-            When I&apos;mm not coding, you can find me exploring new technologies, flying planes, or enjoying the outdoors.
+            When I&apos;m not coding, you can find me exploring new technologies, flying planes, or enjoying the outdoors.
             Feel free to take a look around and reach out if you&apos;d like to connect!
           </p>
           <div className="flex space-x-4">
