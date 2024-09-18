@@ -5,6 +5,8 @@
 @layer base {
   :root {
     --gradient: linear-gradient(to top left,#16222A,#3A6073);
+    --tw-gradient-stops: #16222A, #3A6073;
+
     --background: 217 96.55% 98.26%;
     --foreground: 217 3.1% 0.52%;
 
