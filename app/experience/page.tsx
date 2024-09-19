@@ -95,7 +95,7 @@ const Page = () => {
           <motion.div key={index} variants={fadeIn}>
             <Card>
               <CardHeader>
-                <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div className="flex flex-col md:flex-row justify-between gap-4">
                   <div className="flex items-center space-x-4">
                     <Image
                       src={job.logo}
