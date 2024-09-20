@@ -36,7 +36,7 @@ const experiences: Experience[] = [
       "Improved the client's existing cluttered Angular and Python codebases with a focus on maintainability while introducing new features.",
       "Contributed to the development of a robust new C# .NET Core API for managing integrations, designed for smooth compatibility with the client's existing systems.",
     ],
-    skills: [".NET Core", "C#", "Angular", "Python"],
+    skills: [".NET Core", "C#", "Angular", "Python", "React", "Electron"],
   },
   {
     years: ["May 2024 - August 2024"],
@@ -48,7 +48,7 @@ const experiences: Experience[] = [
       "Leveraged personal expertise in Next.js to mentor team members, significantly boosting overall productivity and knowledge sharing.",
       "Won 1st place in a weekend-long Codeathon competition, designing and creating a C# .NET Core back-end for an internal team selection system.",
     ],
-    skills: ["JavaScript", "React", "Vue.js", "PHP", "MySQL", "Redis"],
+    skills: ["Next.js", "PHP", "React", ".NET Core", "C#"],
   },
   {
     years: ["May 2023 - August 2023"],
@@ -60,7 +60,7 @@ const experiences: Experience[] = [
       "Implemented embedding-based search functionality for efficient querying of internal documents, storing the embeddings in a PostgreSQL database.",
       "Deployed the system on Google Cloud Platform using a CI/CD pipeline, ensuring scalable and robust performance.",
     ],
-    skills: ["HTML", "CSS", "JavaScript", "React Native", "Node.js", "MongoDB"],
+    skills: ["Go", "OpenAI API", "Postgres"],
   },
   {
     years: ["June 2022 - August 2022"],
@@ -70,7 +70,7 @@ const experiences: Experience[] = [
     achievements: [
       "Collaborated with a Web 3.0 startup to integrate their API into a custom toolkit that can be utilized to help develop future applications requiring cryptographic timestamping of sensitive information on a blockchain.",
     ],
-    skills: ["HTML", "CSS", "JavaScript", "React Native", "Node.js", "MongoDB"],
+    skills: ["Python", "Blockchain"],
   },
 ];
 
