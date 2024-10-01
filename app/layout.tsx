@@ -5,6 +5,8 @@ import { Inter } from "next/font/google";
 import { Toaster } from "@/components/ui/toaster";
 import { NavigationContextProvider } from "@/contexts/navigation";
 import { Analytics } from "@vercel/analytics/react";
+import { LayoutTransition } from "@/components/animations/LayoutTransition";
+import { ReactNode } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +19,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html lang="en">
@@ -25,7 +27,9 @@ export default function RootLayout({
         <body className={`${inter.className} antialiased bg-background`}>
           <div className={"relative flex min-h-screen flex-col"}>
             <Header />
-            <main className="container mx-auto px-6 py-12">{children}</main>
+            <main className="container mx-auto px-6 py-12">
+              <LayoutTransition>{children}</LayoutTransition>
+            </main>
           </div>
           <Toaster />
         </body>

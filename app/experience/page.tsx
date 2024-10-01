@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import {
   Card,
   CardContent,
@@ -10,8 +7,6 @@ import {
 } from "@/components/ui/card";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
-import { fadeIn, slideVariants } from "@/lib/animations";
-import { useNavigationContext } from "@/contexts/navigation";
 
 interface Experience {
   years: string[];
@@ -75,76 +70,59 @@ const experiences: Experience[] = [
 ];
 
 const Page = () => {
-  const { direction } = useNavigationContext();
-
   return (
-    <motion.section
-      custom={direction}
-      variants={slideVariants}
-      initial="enter"
-      animate="center"
-      exit="exit"
-      transition={{
-        x: { type: "spring", stiffness: 300, damping: 30 },
-        opacity: { duration: 0.2 },
-      }}
-    >
+    <>
       <h2 className="text-3xl font-bold mb-8">Work Experience</h2>
       <div className="space-y-8">
         {experiences.map((job, index) => (
-          <motion.div key={index} variants={fadeIn}>
-            <Card>
-              <CardHeader>
-                <div className="flex flex-col md:flex-row justify-between gap-4">
-                  <div className="flex items-center space-x-4">
-                    <Image
-                      src={job.logo}
-                      alt={job.company}
-                      width={40}
-                      height={40}
-                      className="rounded-full"
-                    />
-                    <div>
-                      <CardTitle>{job.title}</CardTitle>
-                      <CardDescription>{job.company}</CardDescription>
-                    </div>
-                  </div>
-                  <div className="flex flex-col-reverse">
-                    {job.years.map((year) => (
-                      <span
-                        key={year}
-                        className="text-sm text-muted-foreground"
-                      >
-                        {year}
-                      </span>
-                    ))}
+          <Card key={index}>
+            <CardHeader>
+              <div className="flex flex-col md:flex-row justify-between gap-4">
+                <div className="flex items-center space-x-4">
+                  <Image
+                    src={job.logo}
+                    alt={job.company}
+                    width={40}
+                    height={40}
+                    className="rounded-full"
+                  />
+                  <div>
+                    <CardTitle>{job.title}</CardTitle>
+                    <CardDescription>{job.company}</CardDescription>
                   </div>
                 </div>
-              </CardHeader>
-              <CardContent>
-                {job.description ? (
-                  <p className="mb-4">{job.description}</p>
-                ) : null}
-                <h4 className="font-semibold mb-2">Key Achievements:</h4>
-                <ul className="list-disc list-inside mb-4">
-                  {job.achievements.map((achievement, i) => (
-                    <li key={i}>{achievement}</li>
-                  ))}
-                </ul>
-                <h4 className="font-semibold mb-2">Skills Used:</h4>
-                <div className="flex flex-wrap gap-2">
-                  {job.skills.map((skill, i) => (
-                    <Badge key={i} variant="outline">
-                      {skill}
-                    </Badge>
+                <div className="flex flex-col-reverse">
+                  {job.years.map((year) => (
+                    <span key={year} className="text-sm text-muted-foreground">
+                      {year}
+                    </span>
                   ))}
                 </div>
-              </CardContent>
-            </Card>
-          </motion.div>
+              </div>
+            </CardHeader>
+            <CardContent>
+              {job.description ? (
+                <p className="mb-4">{job.description}</p>
+              ) : null}
+              <h4 className="font-semibold mb-2">Key Achievements:</h4>
+              <ul className="list-disc list-inside mb-4">
+                {job.achievements.map((achievement, i) => (
+                  <li key={i}>{achievement}</li>
+                ))}
+              </ul>
+              <h4 className="font-semibold mb-2">Skills Used:</h4>
+              <div className="flex flex-wrap gap-2">
+                {job.skills.map((skill, i) => (
+                  <Badge key={i} variant="outline">
+                    {skill}
+                  </Badge>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
         ))}
       </div>
-    </motion.section>
+    </>
   );
 };
 

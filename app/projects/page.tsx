@@ -1,6 +1,5 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
 import {
   Card,
   CardContent,
@@ -17,7 +16,6 @@ import { FC, ReactNode, useMemo } from "react";
 import Link from "next/link";
 import { useToast } from "@/hooks/use-toast";
 import { useNavigationContext } from "@/contexts/navigation";
-import { fadeIn, slideVariants } from "@/lib/animations";
 
 interface Project {
   title: string;
@@ -81,69 +79,55 @@ const Page = () => {
   );
 
   return (
-    <AnimatePresence>
-      <motion.section
-        custom={direction}
-        variants={slideVariants}
-        initial="enter"
-        animate="center"
-        exit="exit"
-        transition={{
-          x: { type: "spring", stiffness: 300, damping: 30 },
-          opacity: { duration: 0.2 },
-        }}
-      >
-        <h2 className="text-3xl font-bold mb-8">Projects</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
-            <ProjectCard project={project} key={`project-${index}`} />
-          ))}
-        </div>
-      </motion.section>
-    </AnimatePresence>
+    <>
+      <h2 className="text-3xl font-bold mb-8">Projects</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {projects.map((project, index) => (
+          <ProjectCard project={project} key={`project-${index}`} />
+        ))}
+      </div>
+    </>
   );
 };
 
 const ProjectCard = ({ project }: { project: Project }) => {
   return (
-    <motion.div variants={fadeIn}>
-      <Card className="overflow-hidden">
-        <Image
-          src={project.image}
-          alt={project.title}
-          width={300}
-          height={200}
-          className="w-full h-48 object-cover"
-        />
-        <CardHeader>
-          <CardTitle>{project.title}</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <CardDescription className="mb-4">
-            {project.description}
-          </CardDescription>
-          <div className="flex flex-wrap gap-2 mb-4">
-            {project.technologies.map((tech, i) => (
-              <Badge key={i} variant="secondary">
-                {tech}
-              </Badge>
-            ))}
-          </div>
-        </CardContent>
-        <CardFooter className="flex justify-between">
-          <project.website>
-            <ExternalLink className="mr-2 h-4 w-4" />
-            Visit Site
-          </project.website>
-          <Button variant="outline" size="sm" asChild>
-            <a href={project.github} target="_blank" rel="noopener noreferrer">
-              <Github className="mr-2 h-4 w-4" />
-              View Code
-            </a>
-          </Button>
-        </CardFooter>
-      </Card>
-    </motion.div>
+    <Card className="overflow-hidden">
+      <Image
+        src={project.image}
+        alt={project.title}
+        width={300}
+        height={200}
+        className="w-full h-48 object-cover"
+      />
+      <CardHeader>
+        <CardTitle>{project.title}</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <CardDescription className="mb-4">
+          {project.description}
+        </CardDescription>
+        <div className="flex flex-wrap gap-2 mb-4">
+          {project.technologies.map((tech, i) => (
+            <Badge key={i} variant="secondary">
+              {tech}
+            </Badge>
+          ))}
+        </div>
+      </CardContent>
+      <CardFooter className="flex justify-between">
+        <project.website>
+          <ExternalLink className="mr-2 h-4 w-4" />
+          Visit Site
+        </project.website>
+        <Button variant="outline" size="sm" asChild>
+          <a href={project.github} target="_blank" rel="noopener noreferrer">
+            <Github className="mr-2 h-4 w-4" />
+            View Code
+          </a>
+        </Button>
+      </CardFooter>
+    </Card>
   );
 };
 
