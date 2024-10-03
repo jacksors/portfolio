@@ -15,7 +15,6 @@ import { ExternalLink, Github } from "lucide-react";
 import { FC, ReactNode, useMemo } from "react";
 import Link from "next/link";
 import { useToast } from "@/hooks/use-toast";
-import { useNavigationContext } from "@/contexts/navigation";
 
 interface Project {
   title: string;
@@ -28,8 +27,6 @@ interface Project {
 
 const Page = () => {
   const { toast } = useToast();
-
-  const { direction } = useNavigationContext();
 
   const projects = useMemo(
     (): Project[] => [
