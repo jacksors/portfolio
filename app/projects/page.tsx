@@ -8,20 +8,22 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { ExternalLink, Github } from "lucide-react";
 import { FC, ReactNode, useMemo } from "react";
 import Link from "next/link";
 import { useToast } from "@/hooks/use-toast";
+import aggietrackImage from "@/public/aggietrack.png";
+import portfolioImage from "@/public/portfolio.png";
 
 interface Project {
   title: string;
   description: string;
-  image: string;
+  image: StaticImageData;
   website: FC<{ children: ReactNode }>;
-  github: string;
+  github?: string;
   technologies: string[];
 }
 
@@ -31,9 +33,27 @@ const Page = () => {
   const projects = useMemo(
     (): Project[] => [
       {
-        title: "Example projects",
-        description: "example description",
-        image: "/placeholder.jpg",
+        title: "Aggietrack",
+        description:
+          "Aggietrack is a tool that allows students at Texas A&M to track classes and get notified when seats open up or instructors change. " +
+          "It is built using Next.js and deployed to AWS using Lambda functions, ECS, RDS, S3, SES, and CloudFront.",
+        image: aggietrackImage,
+        website: ({ children }) => (
+          <Link
+            className={buttonVariants({ variant: "outline" })}
+            href="https://aggietrack.app/"
+            target="_blank"
+          >
+            {children}
+          </Link>
+        ),
+        technologies: ["Next.js", "AWS", "Typescript", "Postgres"],
+      },
+      {
+        title: "My Portfolio",
+        description:
+          "This website is built using Next.js, and the UI uses Shadcn, Tailwind CSS, and Framer Motion for animations. It is deployed to Vercel.",
+        image: portfolioImage,
         website: ({ children }) => (
           <Button
             variant="outline"
@@ -51,25 +71,8 @@ const Page = () => {
             {children}
           </Button>
         ),
-        github: "https://github.com/",
-        technologies: ["React", "Node.js", "OpenAI API", "WebSocket"],
-      },
-      {
-        title: "Example projects",
-        description: "example description",
-        image: "/placeholder.jpg",
-        website: ({ children }) => (
-          <Link
-            className={buttonVariants({ variant: "outline" })}
-            href="https://example.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {children}
-          </Link>
-        ),
-        github: "https://github.com",
-        technologies: ["Python", "AST", "Docker", "REST API"],
+        github: "https://github.com/jacksors/portfolio",
+        technologies: ["Next.js", "Vercel", "Tailwind CSS", "Framer Motion"],
       },
     ],
     [toast],
@@ -78,7 +81,7 @@ const Page = () => {
   return (
     <>
       <h2 className="text-3xl font-bold mb-8">Projects</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
         {projects.map((project, index) => (
           <ProjectCard project={project} key={`project-${index}`} />
         ))}
@@ -89,43 +92,50 @@ const Page = () => {
 
 const ProjectCard = ({ project }: { project: Project }) => {
   return (
-    <Card className="overflow-hidden">
+    <Card className="overflow-hidden flex flex-col h-full">
       <Image
         src={project.image}
         alt={project.title}
         width={300}
         height={200}
-        className="w-full h-48 object-cover"
+        className="w-full h-48 object-top object-cover"
       />
-      <CardHeader>
-        <CardTitle>{project.title}</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <CardDescription className="mb-4">
-          {project.description}
-        </CardDescription>
-        <div className="flex flex-wrap gap-2 mb-4">
-          {project.technologies.map((tech, i) => (
-            <Badge key={i} variant="secondary">
-              {tech}
-            </Badge>
-          ))}
-        </div>
-      </CardContent>
-      <CardFooter className="flex justify-between">
-        <project.website>
-          <ExternalLink className="mr-2 h-4 w-4" />
-          Visit Site
-        </project.website>
-        <Button variant="outline" size="sm" asChild>
-          <a href={project.github} target="_blank" rel="noopener noreferrer">
-            <Github className="mr-2 h-4 w-4" />
-            View Code
-          </a>
-        </Button>
-      </CardFooter>
+      <div className="flex flex-col flex-grow">
+        <CardHeader>
+          <CardTitle>{project.title}</CardTitle>
+        </CardHeader>
+        <CardContent className="flex-grow">
+          <CardDescription className="mb-4">
+            {project.description}
+          </CardDescription>
+          <div className="flex flex-wrap gap-2 mb-4">
+            {project.technologies.map((tech, i) => (
+              <Badge key={i} variant="secondary">
+                {tech}
+              </Badge>
+            ))}
+          </div>
+        </CardContent>
+        <CardFooter className="flex justify-between mt-auto">
+          <project.website>
+            <ExternalLink className="mr-2 h-4 w-4" />
+            Visit Site
+          </project.website>
+          {project.github && (
+            <Button variant="outline" asChild>
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Github className="mr-2 h-4 w-4" />
+                View Code
+              </a>
+            </Button>
+          )}
+        </CardFooter>
+      </div>
     </Card>
   );
 };
-
 export default Page;

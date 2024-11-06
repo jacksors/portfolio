@@ -2,12 +2,13 @@ import Image from "next/image";
 import { buttonVariants } from "@/components/ui/button";
 import { Github, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
+import headshotImage from "@/public/nature-me.png";
 
 const Page = () => {
   return (
     <div className="flex flex-col md:flex-row items-center gap-8">
       <Image
-        src="/nature-me.png"
+        src={headshotImage}
         alt="Developer's portrait"
         width={300}
         height={300}

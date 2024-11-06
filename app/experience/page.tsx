@@ -5,14 +5,18 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { Badge } from "@/components/ui/badge";
+import frogslayer from "@/public/frogslayer_logo.jpeg";
+import paycom from "@/public/paycom_logo.png";
+import casa from "@/public/casa_logo.jpeg";
+import ciso from "@/public/ciso_logo.jpeg";
 
 interface Experience {
   years: string[];
   title: string;
   company: string;
-  logo: string;
+  logo: StaticImageData;
   description?: string;
   achievements: string[];
   skills: string[];
@@ -23,7 +27,7 @@ const experiences: Experience[] = [
     years: ["November 2023 - May 2024", "September 2024 - Present"],
     title: "Junior Developer",
     company: "Frogslayer",
-    logo: "/frogslayer_logo.jpeg",
+    logo: frogslayer,
     description:
       "We partner with select clients to rapidly build, launch, and scale software products that create new revenue streams and sources of competitive advantage. Many of our clients are service-based, mid-market companies in compliance-heavy industries like legal, financial services, and healthcare. We help them fundamentally change their operating model to become a software-driven business, regularly creating new value for their customers and staying ahead of changing markets.",
     achievements: [
@@ -37,7 +41,7 @@ const experiences: Experience[] = [
     years: ["May 2024 - August 2024"],
     title: "Software Development Intern",
     company: "Paycom Payroll",
-    logo: "/paycom_logo.png",
+    logo: paycom,
     achievements: [
       "Developed a unified design portal using Next.js and PHP in collaboration with 7 other interns and a UI Design team, significantly enhancing cross-technology development across legacy PHP/jQuery and newer React systems.",
       "Leveraged personal expertise in Next.js to mentor team members, significantly boosting overall productivity and knowledge sharing.",
@@ -49,7 +53,7 @@ const experiences: Experience[] = [
     years: ["May 2023 - August 2023"],
     title: "Automation Developer",
     company: "CASA",
-    logo: "/casa_logo.jpeg",
+    logo: casa,
     achievements: [
       "Researched and developed a platform written in Go using the OpenAI API to enhance advanced search capabilities in internal documents, streamlining corporate training and customer service.",
       "Implemented embedding-based search functionality for efficient querying of internal documents, storing the embeddings in a PostgreSQL database.",
@@ -61,7 +65,7 @@ const experiences: Experience[] = [
     years: ["June 2022 - August 2022"],
     title: "Student Intern",
     company: "CISO Global",
-    logo: "/ciso_logo.jpeg",
+    logo: ciso,
     achievements: [
       "Collaborated with a Web 3.0 startup to integrate their API into a custom toolkit that can be utilized to help develop future applications requiring cryptographic timestamping of sensitive information on a blockchain.",
     ],
