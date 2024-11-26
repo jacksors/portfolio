@@ -39,7 +39,7 @@ export const NavigationContextProvider = ({
     const currentIndex = pages.indexOf(activePage ?? "about");
     const nextIndex = pages.indexOf(nextPage);
     setDirection(nextIndex > currentIndex ? 1 : -1);
-    router.push(`/${nextPage}`);
+    router.push(`/${nextPage}.html`);
   };
 
   return (
