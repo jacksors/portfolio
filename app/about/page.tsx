@@ -47,6 +47,13 @@ const Page = () => {
           >
             <Mail className="h-4 w-4" />
           </Link>
+          <Link
+            className={buttonVariants({ variant: "outline" })}
+            href="/resume.pdf"
+            target="_blank"
+          >
+            Resume
+          </Link>
         </div>
       </div>
     </div>
