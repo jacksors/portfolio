@@ -17,6 +17,7 @@ import Link from "next/link";
 import { useToast } from "@/hooks/use-toast";
 import aggietrackImage from "@/public/aggietrack.png";
 import portfolioImage from "@/public/portfolio.png";
+import dreamdriveImage from "@/public/dreamdrive.jpg";
 
 interface Project {
   title: string;
@@ -48,6 +49,22 @@ const Page = () => {
           </Link>
         ),
         technologies: ["Next.js", "AWS", "Typescript", "Postgres"],
+      },
+      {
+        title: "DreamDrive",
+        description:
+          "DreamDrive is a submission to TAMUHack 2025, and won 2nd place in the Toyota Financial Services challenge. It uses a custom recommendations engine to help users find their next car that factors in lifestyle choices, budget, and more, and includes a virtual assistant to help answer questions and refine user preferences. It is built with Next.js, deployed to AWS, and uses the OpenAI API.",
+        image: dreamdriveImage,
+        website: ({ children }) => (
+          <Link
+            className={buttonVariants({ variant: "outline" })}
+            href="https://dreamdrive.app/"
+            target="_blank"
+          >
+            {children}
+          </Link>
+        ),
+        technologies: ["Next.js", "AWS", "Typescript", "Postgres", "OpenAI"],
       },
       {
         title: "My Portfolio",
