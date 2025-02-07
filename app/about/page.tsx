@@ -49,7 +49,7 @@ const Page = () => {
           </Link>
           <Link
             className={buttonVariants({ variant: "outline" })}
-            href="/resume.pdf"
+            href="/Stone_Jackson.pdf"
             target="_blank"
           >
             Resume
