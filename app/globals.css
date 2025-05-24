@@ -5,19 +5,16 @@
 :root {
     --background: #3D473F;
 
-    --foreground: #765E71;
-    --foreground-offset: #75927B;
+    --foreground-offset: #765E71;
+    --foreground: #75927B;
+
+    --primary: var(--foreground);
+    --primary-foreground: white;
+    --primary-offset: var(--foreground-offset);
+
+    font-size: 16px;
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background: #0a0a0a;
-        --foreground: #ededed;
-    }
-}
-
-body {
-    color: var(--foreground);
-    background: var(--background);
-    font-family: Arial, Helvetica, sans-serif;
+p {
+    @apply font-semibold;
 }

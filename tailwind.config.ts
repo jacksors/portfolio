@@ -10,9 +10,17 @@ export default {
     extend: {
       colors: {
         background: "var(--background)",
-        foreground: "var(--foreground)",
 
-        "foreground-offset": "var(--foreground-offset)",
+        foreground: {
+          DEFAULT: "var(--foreground)",
+          offset: "var(--foreground-offset)",
+        },
+
+        primary: {
+          DEFAULT: "var(--primary)",
+          foreground: "var(--primary-foreground)",
+          offset: "var(--primary-offset)",
+        }
       },
     },
   },
