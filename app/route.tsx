@@ -1,5 +1,5 @@
-import { permanentRedirect } from "next/navigation";
+import {redirect} from "next/navigation";
 
 export const GET = () => {
-  return permanentRedirect("/about");
+  return redirect("/about");
 };
