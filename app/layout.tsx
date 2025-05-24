@@ -1,40 +1,34 @@
-import type { Metadata } from "next";
+import type {Metadata} from "next";
+import {Geist, Geist_Mono} from "next/font/google";
 import "./globals.css";
-import { Header } from "@/components/header";
-import { Inter } from "next/font/google";
-import { Toaster } from "@/components/ui/toaster";
-import { NavigationContextProvider } from "@/contexts/navigation";
-import { Analytics } from "@vercel/analytics/react";
-import { LayoutTransition } from "@/components/animations/LayoutTransition";
-import { ReactNode } from "react";
 
-const inter = Inter({ subsets: ["latin"] });
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Jackson Stone",
-  description: "Jackson Stone's personal developer website.",
-  icons: {},
+  description: "Jackson Stone's personal website",
 };
 
 export default function RootLayout({
-  children,
-}: Readonly<{
-  children: ReactNode;
+                                     children,
+                                   }: Readonly<{
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
-      <NavigationContextProvider>
-        <body className={`${inter.className} antialiased bg-background`}>
-          <div className={"relative flex min-h-screen flex-col"}>
-            <Header />
-            <main className="container mx-auto px-6 py-12">
-              <LayoutTransition>{children}</LayoutTransition>
-            </main>
-          </div>
-          <Toaster />
-        </body>
-      </NavigationContextProvider>
-      <Analytics />
+    <body
+      className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background`}
+    >
+    {children}
+    </body>
     </html>
   );
 }
